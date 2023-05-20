@@ -3,6 +3,17 @@ site_url: https://marketplace.visualstudio.com/items?itemName=maxbilbow.ng2react
 nav:
     - Home: index.md
     - Arc24: arc42.md
+    - Extensions: VSCode.md
+    - "@ng2react/support": ng2react-support.md 
     - About: about.md
     - MkDocs: MkDocs.md
-theme: readthedocs
+theme: 
+    name: readthedocs
+    highlightjs: true
+    hljs_languages:
+        - yaml
+        - rust
+        - tsx
+        - jsx
+        - typescript
+        - javascript
