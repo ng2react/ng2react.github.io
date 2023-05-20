@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://marketplace.visualstudio.com/items/?itemName=maxbilbow.ng2react-vscode&amp;ssr=false#overview/</loc>
+         <lastmod>2023-05-20</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://marketplace.visualstudio.com/items/about/</loc>
+         <lastmod>2023-05-20</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://marketplace.visualstudio.com/items/arc42/</loc>
+         <lastmod>2023-05-20</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://marketplace.visualstudio.com/items/documentation/</loc>
+         <lastmod>2023-05-20</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+</urlset>

@@ -1,0 +1,7 @@
+site_name: AngularJS to React
+site_url: https://marketplace.visualstudio.com/items?itemName=maxbilbow.ng2react-vscode&ssr=false#overview
+nav:
+    - Home: documentation.md
+    - About: about.md
+    - Starter: index.md
+theme: readthedocs
