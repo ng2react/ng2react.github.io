@@ -2,7 +2,6 @@ site_name: AngularJS to React
 site_url: https://marketplace.visualstudio.com/items?itemName=maxbilbow.ng2react-vscode&ssr=false#overview
 nav:
     - Home: index.md
-    - Arc24: arc42.md
     - Extensions: VSCode.md
     - "@ng2react/support": ng2react-support.md 
     - About: about.md

@@ -1,16 +1,10 @@
 **NG2React**
 
+![](images/icon.png)
+
 # Introduction and Goals
 
-Describes the relevant requirements and the driving forces that software
-architects and development team must consider. These include
-
--   underlying business goals, essential features and functional
-    requirements for the system
-
--   quality goals for the architecture
-
--   relevant stakeholders and their expectations
+The overarching aim is to leverage the capabilities of GPT-4 to significantly reduce the time and effort needed to migrate an AngularJS codebase to React.
 
 ## Requirements Overview
 
@@ -247,7 +241,7 @@ level without disclosing implementation details.
 The building block view is a hierarchical collection of black boxes and
 white boxes (see figure below) and their descriptions.
 
-![Hierarchy of building blocks](images/05_building_blocks-EN.png)
+![Hierarchy of building blocks](../images/05_building_blocks-EN.png)
 
 **Level 1** is the white box description of the overall system together
 with black box descriptions of all contained building blocks.
@@ -289,6 +283,39 @@ following white box template. It contains
     will get away with examples or simple signatures.
 
 **_&lt;Overview Diagram&gt;_**
+
+<iframe id="SystemContext" src="/workspace/embed?diagram=SystemContext&diagramSelector=false&iframe=SystemContext" width="50%" marginwidth="0" marginheight="0" frameborder="0" scrolling="no" allowfullscreen="true"></iframe>
+<script type="text/javascript" src="https://static.structurizr.com/js/structurizr-embed.js"></script>
+
+[//]: # ()
+[//]: # (<iframe id="IDE_Containers" src="/workspace/embed?diagram=IDE_Containers&diagramSelector=false&iframe=IDE_Containers" width="100%" marginwidth="0" marginheight="0" frameborder="0" scrolling="no" allowfullscreen="true"></iframe>)
+
+[//]: # (<script type="text/javascript" src="https://static.structurizr.com/js/structurizr-embed.js"></script>)
+
+[//]: # ()
+[//]: # (<iframe id="IDE_Containers_VSCode" src="/workspace/embed?diagram=IDE_Containers_VSCode&diagramSelector=false&iframe=IDE_Containers_VSCode" width="100%" marginwidth="0" marginheight="0" frameborder="0" scrolling="no" allowfullscreen="true"></iframe>)
+
+[//]: # (<script type="text/javascript" src="https://static.structurizr.com/js/structurizr-embed.js"></script>)
+
+[//]: # ()
+[//]: # (<iframe id="IDE_Containers_Generic" src="/workspace/embed?diagram=IDE_Containers_Generic&diagramSelector=false&iframe=IDE_Containers_Generic" width="100%" marginwidth="0" marginheight="0" frameborder="0" scrolling="no" allowfullscreen="true"></iframe>)
+
+[//]: # (<script type="text/javascript" src="https://static.structurizr.com/js/structurizr-embed.js"></script>)
+
+[//]: # ()
+[//]: # (<iframe id="Generic_IDE_Plugins" src="/workspace/embed?diagram=Generic_IDE_Plugins&diagramSelector=false&iframe=Generic_IDE_Plugins" width="100%" marginwidth="0" marginheight="0" frameborder="0" scrolling="no" allowfullscreen="true"></iframe>)
+
+[//]: # (<script type="text/javascript" src="https://static.structurizr.com/js/structurizr-embed.js"></script>)
+
+[//]: # ()
+[//]: # (<iframe id="NodeJS_IDE_Plugins" src="/workspace/embed?diagram=NodeJS_IDE_Plugins&diagramSelector=false&iframe=NodeJS_IDE_Plugins" width="100%" marginwidth="0" marginheight="0" frameborder="0" scrolling="no" allowfullscreen="true"></iframe>)
+
+[//]: # (<script type="text/javascript" src="https://static.structurizr.com/js/structurizr-embed.js"></script>)
+
+[//]: # ()
+[//]: # (<iframe id="Ng2React_Core" src="/workspace/embed?diagram=Ng2React_Core&diagramSelector=false&iframe=Ng2React_Core" width="100%" marginwidth="0" marginheight="0" frameborder="0" scrolling="no" allowfullscreen="true"></iframe>)
+
+[//]: # (<script type="text/javascript" src="https://static.structurizr.com/js/structurizr-embed.js"></script>)
 
 Motivation
 
@@ -635,7 +662,7 @@ A potential (but not mandatory) structure for this section could be:
 Note: it might be difficult to assign individual concepts to one
 specific topic on this list.
 
-![Possible topics for crosscutting concepts](images/08-Crosscutting-Concepts-Structure-EN.png)
+![Possible topics for crosscutting concepts](../images/08-Crosscutting-Concepts-Structure-EN.png)
 
 ## _&lt;Concept 1&gt;_
 
@@ -810,3 +837,5 @@ Potentially more columns in case you need translations.
 | ------ | -------------------- |
 | Term 1 | &lt;definition-1&gt; |
 | Term 2 | &lt;definition-2&gt; |
+
+

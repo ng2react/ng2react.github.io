@@ -1,5 +1,4 @@
 /site
 **/.DS_Store
-/workspace.json
-/.structurizr
 /.vscode/settings.json
+.idea

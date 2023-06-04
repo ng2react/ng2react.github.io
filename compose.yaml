@@ -4,6 +4,10 @@ services:
         container_name: ng2r-structurizr-lite
         restart: always
         volumes:
-            - ./docs:/usr/local/structurizr
+            - ./structurizr:/usr/local/structurizr/ng2react
+            - ./docs/images:/usr/local/structurizr/ng2react/arc42/images:ro
+            - ./docs/diagrams:/usr/local/structurizr/ng2react/arc42/diagrams:ro
+        environment:
+            - STRUCTURIZR_WORKSPACE_PATH=ng2react
         ports:
             - 9000:8080
