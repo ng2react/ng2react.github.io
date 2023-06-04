@@ -1,78 +1,43 @@
 workspace "ng2react" "A tool that converts AngularJS components to React using OpenAI API" {
     !docs ./arc42
+    !identifiers hierarchical
     model {
-        openAiApi = softwareSystem "OpenAI" "Public API for generative AI" "External"
+        openAi = softwareSystem "OpenAI" "OpenAI API" "External"
 
-        ng2react = softwareSystem "ng2react" "IDE Plugin" {
-            feedbackApi = container "@ng2react/feedback" "API for submitting feedback from the IDE plugin" {
-                feedbackDatabase = component "Feedback Database" "A database for storing feedback data" 
-                feedbackRestService = component "Feedback Service" "Handles communication between the API and the database" "OpenAPI" {
-                    feedbackRestService -> feedbackDatabase "Stores/Retrieves feedback"
-                }
-                feedbackViewer = component "Feedback Analysis Client" "A client for reviewing submitted feedback" {
-                    this -> feedbackRestService "Retrieves feedback"
+        ng2react = softwareSystem "AngularJS to React" "Software System" {
+            filesystem = container "File System" "Where the user's project files exist" {
+
+            }
+
+            cli_wrapper = container "@ng2react/cli" "Command line interface for ng2react" "stdio" {
+                !include ng2react-core.dsl
+            }
+
+            IDE = container "Generic IDE" "Integrated Development Environment" "Native" {
+                ide_plugin = component "IDE Extension" "IDE Specific Implementation" "Native" {
+                    this -> cli_wrapper.ng2react_core "Makes API calls" "stdio"
+                    this -> filesystem "Read/Write"
                 }
             }
 
-            ng2react_core = container "@ng2react/core" "Main Ng2React API" "NodeJS" {
-                typescript = component "Typescript" "AST Parsing" "JavaScript" "External"
-                ng2react_core_component = component "@ng2react/core" "Core business logic" "JavaScript" {
-                    this -> typescript "Uses"
-                    this -> openAiApi "Uses"
+            vscode = container "VSCode" "JavaScript IDE" {
+                !include ng2react-core.dsl
+                ide_plugin = component "IDE Plugin" "IDE Extension" "JavaScript" {
+                    this -> ng2react_core "Uses" "JavaScript API"
+                    this -> filesystem "Read/Write"
                 }
             }
-
-            ide_nodejs = container "NodeJS IDE" "IDEs that support JavaScript plugins" "IDE" {
-                ng2react_vscode = component "@ng2react/vscode" "VSCode IDE Plugin" "JavaScript" {
-                    this -> ng2react_core_component "Uses"
-                    this -> feedbackRestService "Sends anlysis to"
-                }
-            }
-
-            ng2react_cli = container "@ng2react/cli" "Command line interface for ng2react" "stdio" {
-                typescript_cli = component "Typescript" "AST Parsing" "JavaScript" "External"
-                ng2react_core_component_cli = component "@ng2react/core" "Core business logic" "JavaScript" {
-                    this -> typescript_cli "Uses"
-                    this -> openAiApi "Uses"
-                }
-                ng2react_cli_component = component "@ng2react/cli" "Command line interface for ng2react" "JavaScript" {
-                    this -> ng2react_core_component_cli "Uses"
-                }
-            }
-
-            ng2react_ide_generic = container "Generic IDE" "IDEs without native JavaScript support" "IntelliJ, Eclipse, NeoVim, etc."  {
-                ng2react_intellij = component "@ng2react/intellij" "IntelliJ Plugin" "Kotlin" "Proposed" {
-                    this -> ng2react_cli_component "Uses"
-                }
-                ng2react_neovim = component "@ng2react/NeoVim" "NeoVim Plugin" "Lua" "Proposed" {
-                    this -> ng2react_cli_component "Uses"
-                }
-                ng2react_eclipse = component "@ng2react/eclipse" "Eclipse Plugin" "Java" "Proposed" {
-                    this -> ng2react_cli_component "Uses"
-                }   
-            }
-        }        
-
-        product_contributor = person "Developer/Analist" "A contributor to the ng2react software system." {
-            this -> feedbackViewer "Analyses data from"
         }
-        
-        generic_ide_user = person "User" "AngularJS/React developer who wants to convert AngularJS components to React" {
-            this -> ide_nodejs "Uses"
-            this -> ng2react_ide_generic "Uses"
+
+        ide_user = person "User" "AngularJS/React developer who wants to convert AngularJS components to React" {
+            this -> ng2react.IDE.ide_plugin "Uses"
+            this -> ng2react.VSCode.ide_plugin "Uses"
         }
 
         deploymentEnvironment "Live" {
             deploymentNode "Developer Laptop" "" "Microsoft Windows 10 or Apple macOS" {
                 deploymentNode "IDE" "" "An integrated development environment with ng2react plugin support" {
-                    plugin = containerInstance ide_nodejs
-                }
-            }
-            deploymentNode "Remote Server" "" "Feedback API" "" {
-                deploymentNode "FeedbackAPI" "" "" {
-                    // softwareSystemInstance feedbackApi
-                    server = containerInstance feedbackApi
-
+                    ideWithPlugin = containerInstance ng2react.IDE
                 }
             }
         }
@@ -84,53 +49,56 @@ workspace "ng2react" "A tool that converts AngularJS components to React using O
             autoLayout
         }
 
-        container ng2react "IDE_Containers" {
+        container ng2react "SoftwareSystem_Generic" {
+            include *
+            exclude ng2react.vscode
+            autoLayout lr
+        }
+
+        container ng2react "SoftwareSystem_VSCode" {
+            include *
+            exclude ng2react.IDE ng2react.cli_wrapper
+            autoLayout lr
+        }
+
+        component ng2react.IDE "Generic_IDE" {
             include *
             autoLayout lr
         }
 
-        container ng2react "IDE_Containers_VSCode" {
-            include *
-            exclude ng2react_ide_generic ng2react_cli
-            autoLayout
-        }
-
-        container ng2react "IDE_Containers_Generic" {
-            include *
-            exclude ng2react_vscode feedbackApi ide_nodejs product_contributor ng2react_core
-            autoLayout
-        }
-
-
-        component ng2react_ide_generic "Generic_IDE_Plugins" {
+        component ng2react.cli_wrapper "AngularJS2React_CLI" {
             include *
             autoLayout lr
         }
 
-        component ide_nodejs "NodeJS_IDE_Plugins" {
-            include *
-            autoLayout lr
-        }
-
-        component ng2react_core "Ng2React_Core" {
-            include *
-            autoLayout lr
-        }
-
-        component ng2react_cli "Ng2React_CLI" {
-            include *
-            autoLayout lr
-        }
-
-        component feedbackApi "Feedback_API" {
+        component ng2react.vscode "VSCode_IDE" {
             include *
             autoLayout lr
         }
 
         deployment ng2react "Live" {
             include *
-            autoLayout
+            autoLayout lr
             description "An example development deployment scenario for the Internet Banking System."
+        }
+
+        dynamic ng2react "ScanProject" {
+            title "User converts AngularJS component to React"
+            ide_user -> ng2react.IDE "Opens AngularJS project inside IDE"
+            ng2react.IDE -> ng2react.cli_wrapper "Sends files for analysis"
+            ng2react.cli_wrapper -> ng2react.IDE "Returns list of convertable components"
+            ng2react.IDE -> ide_user "Displays list of convertable components"
+            autoLayout
+        }
+
+        dynamic ng2react {
+            title "User converts AngularJS component to React"
+            ide_user -> ng2react.IDE "Selects component for conversion"
+            ng2react.IDE -> ng2react.cli_wrapper "Sends component reference"
+            ng2react.cli_wrapper -> openAi "Sends generated prompt"
+            ng2react.cli_wrapper -> ng2react.IDE "Returns Markdown, JSX, and original prompt"
+            ng2react.IDE -> ide_user "Displays markdown response with save options"
+            autoLayout lr
         }
 
         theme default
