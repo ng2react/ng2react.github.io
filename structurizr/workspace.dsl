@@ -2,20 +2,21 @@ workspace "ng2react" "A tool that converts AngularJS components to React using O
     !docs ./arc42
     !identifiers hierarchical
     model {
-        openAi = softwareSystem "OpenAI" "OpenAI API" "External"
+        openAi = softwareSystem "GPT-4" "OpenAI API" "AI"
 
         ng2react = softwareSystem "AngularJS to React" "Software System" {
-            filesystem = container "File System" "Where the user's project files exist" {
-
-            }
+            filesystem = container "File System" "Where the user's project files exist" "Native" "datastore"
 
             cli_wrapper = container "@ng2react/cli" "Command line interface for ng2react" "stdio" {
                 !include ng2react-core.dsl
             }
 
             IDE = container "Generic IDE" "Integrated Development Environment" "Native" {
-                ide_plugin = component "IDE Extension" "IDE Specific Implementation" "Native" {
+                ng2react_api = component "Ng2React API" "Native bridge to Node CLI" "Native" {
                     this -> cli_wrapper.ng2react_core "Makes API calls" "stdio"
+                }
+                ide_plugin = component "IDE Extension" "IDE Specific Implementation" "Native" {
+                    this -> ng2react_api "Uses" "stdio"
                     this -> filesystem "Read/Write"
                 }
             }
@@ -110,7 +111,36 @@ workspace "ng2react" "A tool that converts AngularJS components to React using O
 
             element "Proposed" {
                 background #b7e1cd
-            
+
+            }
+
+            element "AI" {
+                background #aaaaaa
+                shape Robot
+            }
+
+            element "datastore" {
+                //                    shape <Box|RoundedBox|Circle|Ellipse|Hexagon|Cylinder|Pipe|Person|Robot|Folder|WebBrowser|MobileDevicePortrait|MobileDeviceLandscape|Component>
+                shape Cylinder
+                //                    shape Folder
+                //                    icon <file|url>
+                //                    width <integer>
+                //                    height <integer>
+                //                    background <#rrggbb|color name>
+                //                    color <#rrggbb|color name>
+                //                    colour <#rrggbb|color name>
+                //                    stroke <#rrggbb|color name>
+                //                    strokeWidth <integer: 1-10>
+                //                    fontSize <integer>
+                //                    border <solid|dashed|dotted>
+                //                    opacity <integer: 0-100>
+                //                    metadata <true|false>
+                //                    description <true|false>
+                //                    properties {
+                //                        name value
+                //                    }
+            }
+
         }
     }
 }
