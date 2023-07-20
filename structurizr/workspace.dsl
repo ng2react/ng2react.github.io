@@ -2,7 +2,9 @@ workspace "ng2react" "A tool that converts AngularJS components to React using O
     !docs ./arc42
     !identifiers hierarchical
     model {
-        openAi = softwareSystem "GPT-4" "OpenAI API" "AI"
+        openAi = softwareSystem "OpenAI" "OpenAI API" "AI" {
+            gpt = container "GPT-4" "LLM" "" "AI"
+        }
 
         ng2react = softwareSystem "AngularJS to React" "Software System" {
             filesystem = container "File System" "Where the user's project files exist" "Native" "datastore"
@@ -67,13 +69,37 @@ workspace "ng2react" "A tool that converts AngularJS components to React using O
             autoLayout lr
         }
 
+        component ng2react.IDE "Generic_IDE_Bridge" {
+            include ng2react.IDE.ng2react_api ng2react.IDE.ide_plugin ng2react.cli_wrapper
+            exclude ide_user ng2react.filesystem
+            autoLayout lr
+        }
+
+        component ng2react.IDE "Generic_IDE_Bridge_Wrapper" {
+            include ng2react.IDE.ng2react_api ng2react.IDE.ide_plugin ng2react.cli_wrapper.ng2react_core
+            exclude ide_user ng2react.filesystem
+            autoLayout lr
+        }
+
         component ng2react.cli_wrapper "AngularJS2React_CLI" {
             include *
             autoLayout lr
         }
 
+        component ng2react.cli_wrapper "AngularJS2React_CORE" {
+            include *
+            exclude ng2react.IDE
+            autoLayout lr
+        }
+
         component ng2react.vscode "VSCode_IDE" {
             include *
+            autoLayout lr
+        }
+
+        component ng2react.vscode "VSCode_IDE_NoBridge" {
+            include *
+            exclude ide_user ng2react.filesystem ng2react.vscode.typescript openAi
             autoLayout lr
         }
 
@@ -86,6 +112,7 @@ workspace "ng2react" "A tool that converts AngularJS components to React using O
         dynamic ng2react "ScanProject" {
             title "User converts AngularJS component to React"
             ide_user -> ng2react.IDE "Opens AngularJS project inside IDE"
+            ng2react.IDE -> ng2react.filesystem "Scans project for JavaScript files"
             ng2react.IDE -> ng2react.cli_wrapper "Sends files for analysis"
             ng2react.cli_wrapper -> ng2react.IDE "Returns list of convertable components"
             ng2react.IDE -> ide_user "Displays list of convertable components"
@@ -99,6 +126,8 @@ workspace "ng2react" "A tool that converts AngularJS components to React using O
             ng2react.cli_wrapper -> openAi "Sends generated prompt"
             ng2react.cli_wrapper -> ng2react.IDE "Returns Markdown, JSX, and original prompt"
             ng2react.IDE -> ide_user "Displays markdown response with save options"
+            ide_user -> ng2react.IDE "Saves converted component"
+            ng2react.IDE -> ng2react.filesystem "Writes converted component to file"
             autoLayout lr
         }
 
