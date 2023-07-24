@@ -69,6 +69,11 @@ workspace "ng2react" "A tool that converts AngularJS components to React using O
             autoLayout lr
         }
 
+        component ng2react.IDE "Generic_IDE_CLI" {
+            include ide_user ng2react.IDE.ng2react_api ng2react.IDE.ide_plugin ng2react.cli_wrapper.ng2react_core ng2react.cli_wrapper.typescript openAi.gpt ng2react.filesystem
+            autoLayout lr
+        }
+
         component ng2react.IDE "Generic_IDE_Bridge" {
             include ng2react.IDE.ng2react_api ng2react.IDE.ide_plugin ng2react.cli_wrapper
             exclude ide_user ng2react.filesystem
