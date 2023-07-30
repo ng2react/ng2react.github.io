@@ -1,9 +1,9 @@
 # User Guide
 
-• Tree View
-• Context Actions
-• Command Palette
-• Test Generation
+* Tree View
+* Context Actions
+* Command Palette
+* Test Generation
 
 ## Tree View: Finding & Converting Components
 

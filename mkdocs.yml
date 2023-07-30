@@ -5,9 +5,8 @@ nav:
     - Getting Started: getting-started.md
     - User Guide: user-guide.md
     - "@ng2react/support": ng2react-support.md 
-    - Docs: documentation.md
+    - Contribute: contribute.md
     - About: about.md
-    # - MkDocs: MkDocs.md
 theme: 
     name: readthedocs
     highlightjs: true
