@@ -11,7 +11,7 @@ The Ng2React Tree View can be used to identify and convert components: ![Tree Vi
 
 ## Context Menu: Analyse and Convert Components
 
-The Ng2React Context Menu can be used to analyse and convert components: ![Context Actions](./images/v—scode_guide-context-menu.png)
+The Ng2React Context Menu can be used to analyse and convert components: ![Context Actions](./images/vscode_guide_context-menu.png)
 
 ## Review Output
 
