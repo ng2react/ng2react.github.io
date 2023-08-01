@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://marketplace.visualstudio.com/items/contribute/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Contribute - AngularJS to React</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Contribute";
+        var mkdocs_page_input_path = "contribute.md";
+        var mkdocs_page_url = "/items/contribute/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/rust.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/tsx.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/jsx.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/typescript.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/javascript.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> AngularJS to React
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../getting-started/">Getting Started</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../user-guide/">User Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../ng2react-support/">@ng2react/support</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Contribute</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#ide-plugin">IDE Plugin</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#nodejs-based-ide-plugin">NodeJS Based IDE Plugin</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#other-ide-plugins">Other IDE Plugins</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#existing-plugins">Existing Plugins</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#how-to-contribute">How to Contribute</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#creating-a-native-bridge">Creating a Native Bridge</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#build-your-native-plugin">Build your native plugin</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#scan-javascript-for-angularjs-components">Scan JavaScript for AngularJS Components</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#convert-component">Convert Component</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../about/">About</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">AngularJS to React</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
+      <li class="breadcrumb-item active">Contribute</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="contribute">Contribute</h1>
+<p>ng2react is a tool that converts AngularJS components to React components using the OpenAI API. It consists of an IDE plugin, a core library, a CLI with native bridge interfaces for non-JavaScript IDEs, and a support library for hybrid AngularJS/React projects.</p>
+<h2 id="ide-plugin">IDE Plugin</h2>
+<p>The ng2react IDE plugin is an essential component of the ng2react software system. It integrates with the user's development environment and provides an interface for converting AngularJS components to React components using the core library.</p>
+<p>Two types of IDE plugins are supported:</p>
+<ul>
+<li><strong>NodeJS Based IDE Plugins</strong>: These plugins are built for IDEs that support NodeJS plugins, such as VSCode and Atom. They can use @ng2react/core directly.</li>
+<li><strong>Other IDE Plugins</strong>: These plugins are built for IDEs that do not support NodeJS plugins, such as IntelliJ and Eclipse. They can be immpemented via the @ng2react/cli.</li>
+</ul>
+<h3 id="nodejs-based-ide-plugin">NodeJS Based IDE Plugin</h3>
+<p><img alt="NodeJS IDE Plugins" src="../diagrams/structurizr-1-VSCode_IDE.png" /></p>
+<h3 id="other-ide-plugins">Other IDE Plugins</h3>
+<p><img alt="Generic IDE Plugins" src="../diagrams/structurizr-1-Generic_IDE.png" /></p>
+<h3 id="existing-plugins">Existing Plugins</h3>
+<ul>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=maxbilbow.ng2react-vscode">VSCode</a></li>
+<li><a href="https://github.com/ng2react/intellij">IntelliJ</a> (PoC - Contributions welcome)</li>
+</ul>
+<h2 id="how-to-contribute">How to Contribute</h2>
+<p>If your target IDE is not JavaScript based (e.g. VSCode), you will need to use or create a bridge API.</p>
+<h3 id="creating-a-native-bridge">Creating a Native Bridge</h3>
+<p>To do this, start by finding the appropriate JSON Schema generation library for your target language. For example: the <a href="https://github.com/ng2react/cli/tree/main/libraries/java">Java library</a> uses the <a href="https://mvnrepository.com/artifact/org.jsonschema2pojo/jsonschema2pojo-maven-plugin">jsonschema2pojo-maven-plugin</a> to generate the Pojos for interfacing with the <a href="https://github.com/ng2react/cli">CLI</a></p>
+<p>Submit a PR into the <a href="https://github.com/ng2react/cli">@ng2react/cli</a> repository with you native bridge implementation.</p>
+<p><strong>Current Native Bridges:</strong></p>
+<ul>
+<li>Java (for IntelliJ)</li>
+</ul>
+<h3 id="build-your-native-plugin">Build your native plugin</h3>
+<p>Now that you have a native bridge that can interface seamlessly with the CLI, you can build your native plugin. You can maintain it yourself or ask to have it added to the <a href="https://github.com/ng2react">@ng2react</a> project.</p>
+<p>You may look at the VSCode extension for examples but, so log ans you can scan for and convert components, you can build your plugin however you like.</p>
+<h3 id="scan-javascript-for-angularjs-components">Scan JavaScript for AngularJS Components</h3>
+<p><img alt="Scan for components" src="../diagrams/structurizr-1-ScanProject.png" /></p>
+<h3 id="convert-component">Convert Component</h3>
+<p><img alt="Convert component" src="../diagrams/structurizr-1-Dynamic-001.png" /></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../ng2react-support/" class="btn btn-neutral float-left" title="@ng2react/support"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../about/" class="btn btn-neutral float-right" title="About">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../ng2react-support/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../about/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

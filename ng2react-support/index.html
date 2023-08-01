@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://marketplace.visualstudio.com/items/ng2react-support/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>@ng2react/support - AngularJS to React</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "@ng2react/support";
+        var mkdocs_page_input_path = "ng2react-support.md";
+        var mkdocs_page_url = "/items/ng2react-support/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/rust.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/tsx.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/jsx.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/typescript.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/javascript.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> AngularJS to React
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../getting-started/">Getting Started</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../user-guide/">User Guide</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">@ng2react/support</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#convert-your-angularjs-component-or-directive-to-react">Convert your AngularJS component or directive to React</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#wrap-your-react-component">Wrap your React component</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2-way-bindings">2-Way Bindings</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../contribute/">Contribute</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../about/">About</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">AngularJS to React</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
+      <li class="breadcrumb-item active">@ng2react/support</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="ng2reactsupport">@ng2react/support</h1>
+<p>Library of helper utils for AngularJS to React migration</p>
+<p>Based on code found in <a href="https://github.com/xjpro/react-in-angularjs">react-in-angularjs</a></p>
+<h2 id="installation">Installation</h2>
+<pre><code class="language-bash">npm install --save @ng2react/support
+</code></pre>
+<h2 id="usage">Usage</h2>
+<h3 id="convert-your-angularjs-component-or-directive-to-react">Convert your AngularJS component or directive to React</h3>
+<p>You may do this manually or with the help of the <a href="https://marketplace.visualstudio.com/items?itemName=maxbilbow.ng2react-vscode">ng2react vscode extension</a></p>
+<pre><code class="language-jsx">// React Component
+import React, { useState } from 'react'
+import { useService, NgTranslate } from '@ng2react/support'
+
+const MyReactComponent = ({ title, myController }) =&gt; {
+  const myService = useService('myService')
+  const [state, setState] = useState(myService.getState())
+  return (
+    &lt;&gt;
+      &lt;h1&gt;{title}&lt;/h1&gt;
+      &lt;p&gt;{state}&lt;/p&gt;
+      &lt;p&gt;
+        &lt;NgTranslate id={'TRANLATED_TEXT_ID'} substitutions={myController.getValue()} /&gt;
+      &lt;/p&gt;
+    &lt;/&gt;
+  )
+}
+</code></pre>
+<h3 id="wrap-your-react-component">Wrap your React component</h3>
+<pre><code class="language-js">// AngularJS Component
+import * as angular from 'angular'
+import { angularize } from '@ng2react/support'
+import { MyReactComponent } from './MyReactComponent.jsx'
+
+const myApp = angular.module('myApp', [])
+angularize(MyReactElement, {
+  module: myApp,
+  name: 'myAngularComponent',
+  bindings: {
+    title: '@',
+  },
+  require: {
+    myController: '^myController',
+  },
+})
+</code></pre>
+<h3 id="2-way-bindings">2-Way Bindings</h3>
+<p>2-way bindings will not work automatically in react. To maintain this behaviour, you will have to
+manually call an update callback from within the React component and trigger the Angular digest cycle
+from the parent.</p>
+<p><code>angularize</code> can handle this for you:</p>
+<pre><code class="language-tsx">const MyReactComponent = ({ myState, updateMyState }) =&gt; {
+  return &lt;input onChange={(e) =&gt; updateMyState(e.target.value)} value={myState} /&gt;
+}
+
+angularize(MyReactElement, {
+  name: 'myAngularComponent',
+  bindings: {
+    myState: ['=', 'updateMyState'],
+  },
+})
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../user-guide/" class="btn btn-neutral float-left" title="User Guide"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../contribute/" class="btn btn-neutral float-right" title="Contribute">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../user-guide/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../contribute/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
