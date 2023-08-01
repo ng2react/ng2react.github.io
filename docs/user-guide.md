@@ -7,7 +7,9 @@
 
 ## Tree View: Finding & Converting Components
 
-The Ng2React Tree View can be used to identify and convert components: ![Tree View](./images/vscode_guide_tree-view.png)
+| | |
+|----|----|
+| The Ng2React Tree View<br>can be used to identify and convert components | ![Tree View](./images/vscode_guide_tree-view.png) |
 
 ## Context Menu: Analyse and Convert Components
 

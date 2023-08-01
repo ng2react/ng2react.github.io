@@ -16,8 +16,6 @@ If you currently use Protractor, you may want to consider switching to [Cypress]
 
 Good behavioural tests will help you catch bugs in the generated code and have confidence that parity has been achieved.
 
-### Use a UI component library
-
 ## Configuration
 
 Important configuration options.
@@ -28,6 +26,8 @@ Important configuration options.
 - `ng2react.openai.model`: The OpenAI engine to use for generating React components from AngularJS components. Defaults to `gpt-4`.
 - `ng2react.openai.temperature`: The OpenAI temperature to use for generating React components from AngularJS components. Defaults to `0.2`.
 - `ng2react.openai.orginization`: An optional organization ID assiciated with your OpenAI account and can be used to prevent OpenAI from using your code to train their models.
+
+![VSCode OpenAI Settings](./images/vscode_guide_user-settings.png)
 
 ### Project Settings
 
