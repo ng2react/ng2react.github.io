@@ -2,32 +2,34 @@ workspace "ng2react" "A tool that converts AngularJS components to React using O
     !docs ./arc42
     !identifiers hierarchical
     model {
-        openAi = softwareSystem "OpenAI" "OpenAI API" "AI" {
-            gpt = container "GPT-4" "LLM" "" "AI"
-        }
-
         ng2react = softwareSystem "AngularJS to React" "Software System" {
-            filesystem = container "File System" "Where the user's project files exist" "Native" "datastore"
-
-            cli_wrapper = container "@ng2react/cli" "Command line interface for ng2react" "stdio" {
-                !include ng2react-core.dsl
+            openAi = container "OpenAI" "OpenAI API" "REST API""AI" {
+                gpt = component "GPT-4" "LLM" "" "AI"
             }
+            
+            group "Developer Machine" {
+                filesystem = container "File System" "Where the user's project files exist" "Native" "datastore"
 
-            IDE = container "Generic IDE" "Integrated Development Environment" "Native" {
-                ng2react_api = component "Ng2React API" "Native bridge to Node CLI" "Native" {
-                    this -> cli_wrapper.ng2react_core "Makes API calls" "stdio"
+                cli_wrapper = container "@ng2react/cli" "Command line interface for ng2react" "stdio" {
+                    !include ng2react-core.dsl
                 }
-                ide_plugin = component "IDE Extension" "IDE Specific Implementation" "Native" {
-                    this -> ng2react_api "Uses" "stdio"
-                    this -> filesystem "Read/Write"
-                }
-            }
 
-            vscode = container "VSCode" "JavaScript IDE" {
-                !include ng2react-core.dsl
-                ide_plugin = component "IDE Plugin" "IDE Extension" "JavaScript" {
-                    this -> ng2react_core "Uses" "JavaScript API"
-                    this -> filesystem "Read/Write"
+                IDE = container "Generic IDE" "Integrated Development Environment" "Native" {
+                    ng2react_api = component "Ng2React API" "Native bridge to Node CLI" "Native" {
+                        this -> cli_wrapper.ng2react_core "Makes API calls" "stdio"
+                    }
+                    ide_plugin = component "IDE Extension" "IDE Specific Implementation" "Native" {
+                        this -> ng2react_api "Uses" "stdio"
+                        this -> filesystem "Read/Write"
+                    }
+                }
+
+                vscode = container "VSCode" "JavaScript IDE" {
+                    !include ng2react-core.dsl
+                    ide_plugin = component "IDE Plugin" "IDE Extension" "JavaScript" {
+                        this -> ng2react_core "Uses" "JavaScript API"
+                        this -> filesystem "Read/Write"
+                    }
                 }
             }
         }
@@ -65,12 +67,12 @@ workspace "ng2react" "A tool that converts AngularJS components to React using O
         }
 
         component ng2react.IDE "Generic_IDE" {
-            include *
+            include ide_user ng2react.IDE.ng2react_api ng2react.IDE.ide_plugin ng2react.cli_wrapper ng2react.openAi ng2react.filesystem
             autoLayout lr
         }
 
         component ng2react.IDE "Generic_IDE_CLI" {
-            include ide_user ng2react.IDE.ng2react_api ng2react.IDE.ide_plugin ng2react.cli_wrapper.ng2react_core ng2react.cli_wrapper.typescript openAi.gpt ng2react.filesystem
+            include ide_user ng2react.IDE.ng2react_api ng2react.IDE.ide_plugin ng2react.cli_wrapper.ng2react_core ng2react.cli_wrapper.typescript ng2react.openAi ng2react.filesystem
             autoLayout lr
         }
 
@@ -104,7 +106,7 @@ workspace "ng2react" "A tool that converts AngularJS components to React using O
 
         component ng2react.vscode "VSCode_IDE_NoBridge" {
             include *
-            exclude ide_user ng2react.filesystem ng2react.vscode.typescript openAi
+            exclude ide_user ng2react.filesystem ng2react.vscode.typescript ng2react.openAi
             autoLayout lr
         }
 
@@ -128,7 +130,7 @@ workspace "ng2react" "A tool that converts AngularJS components to React using O
             title "User converts AngularJS component to React"
             ide_user -> ng2react.IDE "Selects component for conversion"
             ng2react.IDE -> ng2react.cli_wrapper "Sends component reference"
-            ng2react.cli_wrapper -> openAi "Sends generated prompt"
+            ng2react.cli_wrapper -> ng2react.openAi "Sends generated prompt"
             ng2react.cli_wrapper -> ng2react.IDE "Returns Markdown, JSX, and original prompt"
             ng2react.IDE -> ide_user "Displays markdown response with save options"
             ide_user -> ng2react.IDE "Saves converted component"
